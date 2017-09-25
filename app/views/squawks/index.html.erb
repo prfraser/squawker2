@@ -15,7 +15,7 @@
     <% @squawks.each do |squawk| %>
       <tr>
         <td><%= squawk.content %></td>
-        <td><%= squawk.user %></td>
+        <td><%= squawk.user.email %></td>
         <td><%= link_to 'Show', squawk %></td>
         <td><%= link_to 'Edit', edit_squawk_path(squawk) %></td>
         <td><%= link_to 'Destroy', squawk, method: :delete, data: { confirm: 'Are you sure?' } %></td>
