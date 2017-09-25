@@ -1,0 +1,27 @@
+<%= form_with(model: squawk, local: true) do |form| %>
+  <% if squawk.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(squawk.errors.count, "error") %> prohibited this squawk from being saved:</h2>
+
+      <ul>
+      <% squawk.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_field :content, id: :squawk_content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :squawk_user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
