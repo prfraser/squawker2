@@ -1,7 +1,8 @@
 class SquawksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_squawk, only: [:show, :edit, :update, :destroy]
-  
+  before_action :check_user, only: [:edit, :update, :destroy]
+
   # GET /squawks
   # GET /squawks.json
   def index
@@ -20,13 +21,14 @@ class SquawksController < ApplicationController
 
   # GET /squawks/1/edit
   def edit
+
   end
 
   # POST /squawks
   # POST /squawks.json
   def create
     @squawk = Squawk.new(squawk_params)
-
+    @squawk.user_id = current_user.id
     respond_to do |format|
       if @squawk.save
         format.html { redirect_to @squawk, notice: 'Squawk was successfully created.' }
@@ -71,5 +73,11 @@ class SquawksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def squawk_params
       params.require(:squawk).permit(:content, :user_id)
+    end
+
+    def check_user
+      if current_user!= @squawk.user
+        redirect_to root_url, alert: "Sorry, this tweet belongs to someone else."
+      end
     end
 end
