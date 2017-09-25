@@ -2,6 +2,7 @@
 
 <h1>Squawks</h1>
 
+
 <table>
   <thead>
     <tr>
@@ -26,4 +27,6 @@
 
 <br>
 
-<%= link_to 'New Squawk', new_squawk_path %>
+<%= render 'form', squawk: @squawk %>
+
+
