@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @squawk.content %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @squawk.user %>
+</p>
+
+<%= link_to 'Edit', edit_squawk_path(@squawk) %> |
+<%= link_to 'Back', squawks_path %>
